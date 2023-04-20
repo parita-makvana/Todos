@@ -74,19 +74,29 @@ app.post('/api/v1/todos', (req, res) => {
 //PATCH
 //UPDATE
 app.patch('/api/v1/todos/:id', (req, res) => {
-  if (req.params.id * 1 > todo.length) {
+  const id = req.params.id * 1;
+  if (id > todo.length) {
     return res.status(404).json({
       status: 'fail',
       message: 'Invalid ID',
     });
   }
 
-  res.status(200).json({
-    status: 'success',
-    data: {
-      todo: '<Updated todo here...>',
-    },
-  });
+  const update = req.body.status;
+  let index = todo.findIndex((x) => x.id === id);
+  todo[index].status = update;
+
+  console.log(`Todo with ID ${index} updated successfully`);
+
+  fs.writeFile(
+    `${__dirname}/dev-data/data/todo-simple.json`,
+    JSON.stringify(todo),
+    (err) => {
+      res.status(200).json({
+        status: 'success',
+      });
+    }
+  );
 });
 
 //------------------------------------------------
@@ -128,7 +138,7 @@ app.delete('/api/v1/todos/:id', (req, res) => {
 });
 
 //
-//
+//----------
 //listener
 const port = 3000;
 app.listen(port, () => {
