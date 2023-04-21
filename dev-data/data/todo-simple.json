@@ -1,1 +1,23 @@
-[{"id":0,"task":"Javascript Book","description":"Go through the Javascript book and event loop basics","status":"Completed","startDate":["2023-04-1,10:00"]},{"id":1,"task":"Node JS","description":"Go through the course from section 1 to 5","status":"Completed","startDate":["2023-04-1,10:00"]},{"id":2,"task":"Express","description":"Go through the course from section 6","status":"Completed","startDate":["2023-04-1,10:00"]},{"id":3,"task":"Git continue......","description":"Analyse how to add all these on git","status":"Ongoing","startDate":["2023-04-19,10:00"]}]
+[
+  {
+    "id": 0,
+    "task": "Javascript Book",
+    "description": "Go through the Javascript book and event loop basics",
+    "status": "Completed",
+    "startDate": ["2023-04-1,10:00"]
+  },
+  {
+    "id": 1,
+    "task": "Node JS",
+    "description": "Go through the course from section 1 to 5",
+    "status": "Completed..",
+    "startDate": ["2023-04-1,10:00"]
+  },
+  {
+    "id": 2,
+    "task": "Express",
+    "description": "Go through the course section 6",
+    "status": "Completed..",
+    "startDate": ["2023-04-1,10:00"]
+  }
+]

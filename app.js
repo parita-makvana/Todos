@@ -1,5 +1,5 @@
-const fs = require('fs');
-const express = require('express');
+const fs = require("fs");
+const express = require("express");
 const app = express();
 app.use(express.json()); //middleware...in the middle of the requests
 
@@ -11,9 +11,9 @@ const todo = JSON.parse(
 //---------------------------------------------
 //GET
 //send back all the todo tasks for a users
-app.get('/api/v1/todos', (req, res) => {
+app.get("/api/v1/todos", (req, res) => {
   res.status(200).json({
-    status: 'success',
+    status: "success",
     results: todo.length,
     data: {
       //envelope
@@ -24,7 +24,7 @@ app.get('/api/v1/todos', (req, res) => {
 
 //-------------------------------------------
 //GET Filtered ID todo
-app.get('/api/v1/todos/:id', (req, res) => {
+app.get("/api/v1/todos/:id", (req, res) => {
   console.log(req.params); //all the parameters that we define above "id" are stored here
   const id = req.params.id * 1;
   const todo_selected = todo.find((el) => el.id === id);
@@ -32,13 +32,13 @@ app.get('/api/v1/todos/:id', (req, res) => {
   //if (id > todo.length)
   if (!todo_selected) {
     return res.status(404).json({
-      status: 'fail',
-      message: 'Invalid ID',
+      status: "fail",
+      message: "Invalid ID",
     });
   }
 
   res.status(200).json({
-    status: 'success',
+    status: "success",
     data: {
       todo_selected,
     },
@@ -48,7 +48,7 @@ app.get('/api/v1/todos/:id', (req, res) => {
 //--------------------------------------------
 //POST
 //to add a new todo task
-app.post('/api/v1/todos', (req, res) => {
+app.post("/api/v1/todos", (req, res) => {
   //console.log(req.body);
 
   const newId = todo[todo.length - 1].id + 1; //fetching last id
@@ -60,7 +60,7 @@ app.post('/api/v1/todos', (req, res) => {
     JSON.stringify(todo),
     (err) => {
       res.status(201).json({
-        status: 'success',
+        status: "success",
         data: {
           todo: newTodo,
         },
@@ -73,12 +73,12 @@ app.post('/api/v1/todos', (req, res) => {
 //--------------------------------------------
 //PATCH
 //UPDATE
-app.patch('/api/v1/todos/:id', (req, res) => {
+app.patch("/api/v1/todos/:id", (req, res) => {
   const id = req.params.id * 1;
   if (id > todo.length) {
     return res.status(404).json({
-      status: 'fail',
-      message: 'Invalid ID',
+      status: "fail",
+      message: "Invalid ID",
     });
   }
 
@@ -93,7 +93,7 @@ app.patch('/api/v1/todos/:id', (req, res) => {
     JSON.stringify(todo),
     (err) => {
       res.status(200).json({
-        status: 'success',
+        status: "success",
       });
     }
   );
@@ -101,11 +101,11 @@ app.patch('/api/v1/todos/:id', (req, res) => {
 
 //------------------------------------------------
 //DELETE
-app.delete('/api/v1/todos/:id', (req, res) => {
+app.delete("/api/v1/todos/:id", (req, res) => {
   if (req.params.id * 1 > todo.length) {
     return res.status(404).json({
-      status: 'fail',
-      message: 'Invalid ID',
+      status: "fail",
+      message: "Invalid ID",
     });
   }
 
@@ -122,7 +122,7 @@ app.delete('/api/v1/todos/:id', (req, res) => {
     JSON.stringify(todo),
     (err) => {
       res.status(201).json({
-        status: 'success',
+        status: "success",
         data: {
           todo,
         },
