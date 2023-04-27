@@ -1,17 +1,9 @@
-//--------------------------------------------
-//POST
-//to add a new todo task
-
 const fs = require("fs");
-const express = require("express");
-const app = express();
-app.use(express.json());
-
 const todo = JSON.parse(fs.readFileSync("./dev-data/data/todo-simple.json"));
 
-const addTodo = (req, res) => {
-  //console.log(req.body);
-
+//POST
+//Function to add a new todo task
+const addTask = (req, res) => {
   const newId = todo[todo.length - 1].id + 1; //fetching last id
   const newTodo = Object.assign({ id: newId }, req.body); //temp object
   todo.push(newTodo); //pushing into the todo array
@@ -28,7 +20,6 @@ const addTodo = (req, res) => {
       });
     }
   );
-  //res.send('Done adding a new todo');
 };
 
-module.exports = addTodo;
+module.exports = addTask;
