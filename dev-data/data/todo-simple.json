@@ -33,5 +33,19 @@
     "description": "Do some Hands on",
     "status": "Ongoing",
     "startDate": ["2023-04-21,12:00"]
+  },
+  {
+    "id": 5,
+    "task": "Git versioning",
+    "description": "Do some Hands on",
+    "status": "Complete",
+    "startDate": ["2023-04-25,12:00"]
+  },
+  {
+    "id": 6,
+    "task": "Git Best Practices",
+    "description": "Do some Hands on",
+    "status": "Ongoing",
+    "startDate": ["2023-04-26,12:00"]
   }
 ]
